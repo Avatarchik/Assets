@@ -30,7 +30,7 @@ public class Menu : MonoBehaviour {
 		titleStyle.font = fontFamily;
 		titleStyle.normal.textColor = Color.red;
 		
-        GUI.Label(new Rect(0, 50, 100, 20), "Projet Base Jump",titleStyle);
+        GUI.Label(new Rect(Screen.width/2 -400, 100, 100, 20), "Projet Base Jump",titleStyle);
 		
 		
 	/*	Color c = new Color(0.5f,0.1f,0.1f);
