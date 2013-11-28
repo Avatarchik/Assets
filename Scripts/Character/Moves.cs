@@ -3,16 +3,21 @@ using System.Collections;
 
 public class Moves : MonoBehaviour
 {
-    public float moveSpeed = 1f;
+    public float moveSpeed = 0.5f;
     public float turnSpeed = 0.1f;
+	
+	 public float smooth = 2.0F;
 	
 	float rotX;
 	float rotY;
 	
+	float angularTopDown;
+	float angularLeftRight;
+	
 	void Start(){
 
 		rigidbody.freezeRotation=true;
-		Physics.gravity = new Vector3(0, -10.0F, 0);
+		Physics.gravity = new Vector3(0, -5.0F, 0);
 
 	}
 	
@@ -29,9 +34,9 @@ public class Moves : MonoBehaviour
 		if(Input.GetKey("s"))
            transform.position -= transform.up*moveSpeed;
 		
-		if(Input.GetKey("d"))
-           transform.position += transform.forward*moveSpeed;
-			
+		if(Input.GetKey("d")){
+			transform.position += transform.forward*moveSpeed;
+		}	
 		if(Input.GetKey("q"))
             transform.position -= transform.forward*moveSpeed;
 		
@@ -39,7 +44,7 @@ public class Moves : MonoBehaviour
         {
            // transform.Translate(0,0.2f,0);
 			
-			 GameObject.FindWithTag("bob").transform.Rotate(0, 0, 90);
+			// GameObject.FindWithTag("bob").transform.Rotate(0, 0, 90);
 			
         }
 		
@@ -48,8 +53,21 @@ public class Moves : MonoBehaviour
 		rotX = Input.mousePosition.y - Screen.height/2;
 		rotY = Input.mousePosition.x - Screen.width/2;
 		
+		Debug.Log("angularTopDown = "+rotX/(Screen.height/140));
 		
-		Camera.main.transform.localEulerAngles = new Vector3(-rotX/(Screen.height/120),270+rotY/(Screen.width/45),0);
+		angularTopDown = 90-rotX/(Screen.height/140);
+		angularLeftRight =270+rotY/(Screen.width/10);
+		
+		
+		
+		if((angularTopDown)>150)
+			angularTopDown = 150;
+		if((angularTopDown)< 10)
+			angularTopDown = 10;
+		
+		//Debug.Log("angularTopDown = "+angularTopDown+" angularLeftRight = "+angularLeftRight);
+		
+		 GameObject.Find("Vue").transform.localEulerAngles = new Vector3(angularTopDown,angularLeftRight,0);
 		
 		//Camera.main.transform.localEulerAngles = new Vector3(rotX%360,rotY%360,0);
 		

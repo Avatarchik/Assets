@@ -376,26 +376,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400050}
-  - 20: {fileID: 2000000}
-  - 124: {fileID: 12400000}
-  - 92: {fileID: 9200000}
-  - 81: {fileID: 8100000}
-  - 114: {fileID: 11400000}
-  m_Layer: 0
-  m_Name: Vue
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100052
 GameObject:
   m_ObjectHideFlags: 1
@@ -585,9 +565,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400076}
   - 95: {fileID: 9500000}
-  - 65: {fileID: 6500000}
-  - 114: {fileID: 11400002}
-  - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: bob
   m_TagString: Untagged
@@ -1011,17 +988,6 @@ Transform:
   m_Children:
   - {fileID: 400092}
   m_Father: {fileID: 400090}
---- !u!4 &400050
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_LocalRotation: {x: .116341107, y: .697470248, z: .116341107, w: -.697470248}
-  m_LocalPosition: {x: 118.539925, y: 152.726349, z: -3.53462481}
-  m_LocalScale: {x: 1.35698199, y: 1.35698175, z: 1.35698152}
-  m_Children: []
-  m_Father: {fileID: 400076}
 --- !u!4 &400052
 Transform:
   m_ObjectHideFlags: 1
@@ -1169,13 +1135,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100076}
-  m_LocalRotation: {x: -.550446033, y: -.533824801, z: -.463398546, w: -.444187075}
-  m_LocalPosition: {x: 1150.72107, y: 5733.10254, z: 812.80481}
-  m_LocalScale: {x: .736929417, y: .736929476, z: .736929357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400090}
   - {fileID: 400002}
-  - {fileID: 400050}
   m_Father: {fileID: 0}
 --- !u!4 &400078
 Transform:
@@ -1278,75 +1243,6 @@ Transform:
   - {fileID: 400074}
   - {fileID: 400072}
   m_Father: {fileID: 400048}
---- !u!20 &2000000
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: .00999999978
-  far clip plane: 10000
-  field of view: 41.4000015
-  orthographic: 0
-  orthographic size: 100
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_HDR: 0
---- !u!54 &5400000
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100076}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &6500000
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 38, y: 171.800003, z: 44.0999985}
-  m_Center: {x: 0, y: 89.5999985, z: 0}
---- !u!81 &8100000
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_Enabled: 1
---- !u!92 &9200000
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_Enabled: 1
 --- !u!95 &9500000
 Animator:
   m_ObjectHideFlags: 1
@@ -1354,47 +1250,11 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100076}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b25a3a6f4ed71c247afb46195b54a968, type: 3}
+  m_Avatar: {fileID: 9000000, guid: a6e486ad1c802f24c92a7c8b007a7cbc, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e3af12d1ec00d4b819bc8330abda03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  sensitivity: 7000
-  moveSpeed: 10
-  turnSpeed: 50
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f28fd592cf8d964a8da82c0c3490234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  turnSpeed: .100000001
---- !u!124 &12400000
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100050}
-  m_Enabled: 1
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1407,7 +1267,7 @@ SkinnedMeshRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 26fc1131481e6984eb61be1138b7b49d, type: 2}
+  - {fileID: 2100000, guid: fad9ee9d39c017440b5079354d5649a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1416,7 +1276,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: b25a3a6f4ed71c247afb46195b54a968, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a6e486ad1c802f24c92a7c8b007a7cbc, type: 3}
   m_Bones:
   - {fileID: 400090}
   - {fileID: 400048}
@@ -1464,8 +1324,8 @@ SkinnedMeshRenderer:
   - {fileID: 400000}
   m_RootBone: {fileID: 400090}
   m_AABB:
-    m_Center: {x: .944423676, y: -.308204651, z: 2.27238464}
-    m_Extent: {x: 17.6749897, y: 35.6090927, z: 92.776001}
+    m_Center: {x: .944423676, y: .00404930115, z: 2.27238846}
+    m_Extent: {x: 17.6749897, y: 35.2968369, z: 92.776001}
   m_DirtyAABB: 0
 --- !u!1001 &100100000
 Prefab:
