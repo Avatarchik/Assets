@@ -13,6 +13,7 @@ public class Collisions : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		
         if(other.CompareTag("Glass")){
+			Debug.Log ("Glass");
 			score.Add(10);
 			other.audio.Play();
 			Destroy(other);
@@ -23,10 +24,24 @@ public class Collisions : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col) {
 		GameObject other = col.gameObject;
+		
 		if(other.CompareTag("Building")){
 			score.Add (-20);
 			other.audio.Play ();
 			//TODO : Louder. On l'entend à peine le son.
+		}
+		
+		if(other.CompareTag("Ground")){
+			score.Add (50);
+			Debug.Log ("GRROUUUUUND");
+			other.audio.Play();
+		}
+		
+		//TOFIX : Ne détecte pas la Target quand on se pose dessus
+		if(other.CompareTag("Target")){
+			score.Add (-50);
+			Debug.Log ("TARGEET");
+			other.audio.Play();
 		}
 	}
 	

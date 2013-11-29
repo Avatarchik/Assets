@@ -34,7 +34,7 @@ public class ProgressBar : MonoBehaviour {
        //eg, the loading progress, the player's health, or whatever.
        barDisplay = GameObject.Find("Vue").transform.position.y/InitialY;
 		
-		Debug.Log(InitialY+" altitude "+GameObject.Find("Vue").transform.position.y);
+		//Debug.Log(InitialY+" altitude "+GameObject.Find("Vue").transform.position.y);
 		
 //   barDisplay = MyControlScript.staticHealth;
     }

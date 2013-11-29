@@ -6,7 +6,7 @@ public class Moves : MonoBehaviour
     public float moveSpeed = 0.5f;
     public float turnSpeed = 0.1f;
 	
-	 public float smooth = 2.0F;
+	public float smooth = 2.0F;
 	
 	float rotX;
 	float rotY;
@@ -17,14 +17,15 @@ public class Moves : MonoBehaviour
 	void Start(){
 
 		rigidbody.freezeRotation=true;
-		Physics.gravity = new Vector3(0, -5.0F, 0);
+		Physics.gravity = new Vector3(0, -8.0F, 0);
+		
+		StartCoroutine("Woohoo",1.0);
 
 	}
 	
 	
     void Update ()
     {
-		//transform.Translate(-transform.forward * 2f);
 		
 		//Debug.Log ("coeff"+moveSpeed*Time.deltaTime, gameObject);
 		
@@ -53,7 +54,7 @@ public class Moves : MonoBehaviour
 		rotX = Input.mousePosition.y - Screen.height/2;
 		rotY = Input.mousePosition.x - Screen.width/2;
 		
-		Debug.Log("angularTopDown = "+rotX/(Screen.height/140));
+		//Debug.Log("angularTopDown = "+rotX/(Screen.height/140));
 		
 		angularTopDown = 90-rotX/(Screen.height/140);
 		angularLeftRight =270+rotY/(Screen.width/10);
@@ -85,6 +86,13 @@ public class Moves : MonoBehaviour
 		
 		
     }
+	
+	//Tout ça pour un foutu "Wouhouuu" x)
+	IEnumerator Woohoo(float delay)
+	{
+		yield return new WaitForSeconds (delay);
+		audio.Play ();
+	}
         
         
     }
