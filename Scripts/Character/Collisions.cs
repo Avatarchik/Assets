@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Collisions : MonoBehaviour {
 	
-	private Score score;
+	private Manage score;
+	private Moves move;
 
 	// Use this for initialization
 	void Start () {
-		score = GameObject.FindWithTag("Manager").GetComponent<Score>();
+		score = GameObject.FindWithTag("Manager").GetComponent<Manage>();
+		move = GetComponent<Moves>();
 	}
 	
 	void OnTriggerEnter(Collider other) {
@@ -19,6 +21,13 @@ public class Collisions : MonoBehaviour {
 			Destroy(other);
 			//TODO : Animation de destruction ?
 			//L'objet n'est pas détruit ?
+		}
+		
+		if(other.CompareTag("Target")){
+			Debug.Log ("TARGET");
+			score.Add (-50);
+			other.audio.Play();
+			
 		}
 	}
 	
@@ -35,14 +44,10 @@ public class Collisions : MonoBehaviour {
 			score.Add (50);
 			Debug.Log ("GRROUUUUUND");
 			other.audio.Play();
+			move.dontMove();
+			
 		}
-		
-		//TOFIX : Ne détecte pas la Target quand on se pose dessus
-		if(other.CompareTag("Target")){
-			score.Add (-50);
-			Debug.Log ("TARGEET");
-			other.audio.Play();
-		}
+
 	}
 	
 	//Gagner des points en frolant les batiments

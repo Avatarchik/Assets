@@ -8,16 +8,20 @@ public class Moves : MonoBehaviour
 	
 	public float smooth = 2.0F;
 	
+	public float gravity = 6;
+	
 	float rotX;
 	float rotY;
 	
 	float angularTopDown;
 	float angularLeftRight;
 	
+	private bool dontmove = false;
+	
 	void Start(){
 
 		rigidbody.freezeRotation=true;
-		Physics.gravity = new Vector3(0, -5.0F, 0);
+		Physics.gravity = new Vector3(0, -gravity, 0);
 		
 		StartCoroutine("Woohoo",1.0);
 
@@ -29,25 +33,28 @@ public class Moves : MonoBehaviour
 		
 		//Debug.Log ("coeff"+moveSpeed*Time.deltaTime, gameObject);
 		
-        if(Input.GetKey("z"))
-            transform.position += transform.up*moveSpeed;
-        
-		if(Input.GetKey("s"))
-           transform.position -= transform.up*moveSpeed;
-		
-		if(Input.GetKey("d")){
-			transform.position += transform.forward*moveSpeed;
-		}	
-		if(Input.GetKey("q"))
-            transform.position -= transform.forward*moveSpeed;
-		
-		if (Input.GetKey(KeyCode.Space))
-        {
-           // transform.Translate(0,0.2f,0);
+		if (!dontmove)
+		{
+	        if(Input.GetKey("z"))
+	            transform.position += transform.up*moveSpeed;
+	        
+			if(Input.GetKey("s"))
+	           transform.position -= transform.up*moveSpeed;
 			
-			// GameObject.FindWithTag("bob").transform.Rotate(0, 0, 90);
+			if(Input.GetKey("d")){
+				transform.position += transform.forward*moveSpeed;
+			}	
+			if(Input.GetKey("q"))
+	            transform.position -= transform.forward*moveSpeed;
 			
-        }
+			if (Input.GetKey(KeyCode.Space))
+	        {
+	           // transform.Translate(0,0.2f,0);
+				
+				// GameObject.FindWithTag("bob").transform.Rotate(0, 0, 90);
+				
+	        }
+		}
 		
 		
 	
@@ -92,6 +99,11 @@ public class Moves : MonoBehaviour
 	{
 		yield return new WaitForSeconds (delay);
 		audio.Play ();
+	}
+	
+	public void dontMove()
+	{
+		dontmove = true;
 	}
         
         

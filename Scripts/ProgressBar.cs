@@ -7,13 +7,14 @@ public class ProgressBar : MonoBehaviour {
     public Vector2 size = new Vector2(600,20);
     public Texture2D emptyTex;
     public Texture2D fullTex;
+	private GameObject vue;
  
-	
 	float InitialY;
 	
 	void Start() {
        
-		InitialY = GameObject.Find("Vue").transform.position.y;
+		vue = GameObject.Find ("Vue");
+		InitialY = vue.transform.position.y;
     }
 	
     void OnGUI() {
@@ -32,7 +33,9 @@ public class ProgressBar : MonoBehaviour {
        //for this example, the bar display is linked to the current time,
        //however you would set this value based on your desired display
        //eg, the loading progress, the player's health, or whatever.
-       barDisplay = GameObject.Find("Vue").transform.position.y/InitialY;
+       //barDisplay = GameObject.Find("Vue").transform.position.y/InitialY;
+		barDisplay = vue.transform.position.y/InitialY;
+		
 		
 		//Debug.Log(InitialY+" altitude "+GameObject.Find("Vue").transform.position.y);
 		
