@@ -17,7 +17,7 @@ public class Moves : MonoBehaviour
 	void Start(){
 
 		rigidbody.freezeRotation=true;
-		Physics.gravity = new Vector3(0, -8.0F, 0);
+		Physics.gravity = new Vector3(0, -5.0F, 0);
 		
 		StartCoroutine("Woohoo",1.0);
 
