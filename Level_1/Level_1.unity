@@ -38015,7 +38015,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 47a92b7da2418e84ba0ede953f6cf7e7, type: 2}
+  - {fileID: 2100000, guid: a8addb9db7b49bc448fe3517d13cdc7f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -51607,30 +51607,30 @@ Transform:
   m_LocalPosition: {x: 786.464233, y: -26.3400002, z: 3285.42041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 251858062}
-  - {fileID: 1508677854}
-  - {fileID: 327181345}
   - {fileID: 1694227934}
+  - {fileID: 1508677854}
   - {fileID: 1520364066}
-  - {fileID: 454948247}
   - {fileID: 811938356}
-  - {fileID: 514100758}
-  - {fileID: 1880331175}
   - {fileID: 471395425}
-  - {fileID: 672109556}
-  - {fileID: 1924939464}
-  - {fileID: 555851844}
-  - {fileID: 191991868}
   - {fileID: 1275066152}
   - {fileID: 1191821758}
   - {fileID: 1635597689}
-  - {fileID: 1589217315}
-  - {fileID: 530372709}
-  - {fileID: 125779687}
-  - {fileID: 637486646}
-  - {fileID: 1518102184}
   - {fileID: 258588116}
+  - {fileID: 514100758}
+  - {fileID: 1880331175}
+  - {fileID: 454948247}
+  - {fileID: 1589217315}
   - {fileID: 1248207085}
+  - {fileID: 1518102184}
+  - {fileID: 191991868}
+  - {fileID: 1924939464}
+  - {fileID: 530372709}
+  - {fileID: 327181345}
+  - {fileID: 672109556}
+  - {fileID: 555851844}
+  - {fileID: 125779687}
+  - {fileID: 251858062}
+  - {fileID: 637486646}
   m_Father: {fileID: 0}
 --- !u!1 &1150922686
 GameObject:
@@ -75325,7 +75325,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715014306}
   m_LocalRotation: {x: .5, y: .5, z: -.5, w: -.5}
-  m_LocalPosition: {x: 503.158813, y: 4583.2627, z: 1181.93994}
+  m_LocalPosition: {x: 503.158813, y: 5729.74609, z: 1181.93994}
   m_LocalScale: {x: .0336942114, y: .033671461, z: .0326240398}
   m_Children:
   - {fileID: 2136200393}
@@ -75385,7 +75385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f28fd592cf8d964a8da82c0c3490234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: .5
+  moveSpeed: 13.6999998
   turnSpeed: .100000001
   smooth: 2
 --- !u!82 &1715014312
