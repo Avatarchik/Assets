@@ -6,9 +6,9 @@ public class Moves : MonoBehaviour
     public float moveSpeed = 0.5f;
     public float turnSpeed = 0.1f;
 	
-	public float smooth = 2.0F;
+	public float smooth = 2.0f;
 	
-	public float gravity = 6;
+	public float gravity = 9.8f;
 	
 	float rotX;
 	float rotY;
@@ -17,6 +17,8 @@ public class Moves : MonoBehaviour
 	float angularLeftRight;
 	
 	private bool dontmove = false;
+	
+	public AudioClip woohoo;
 	
 	void Start(){
 
@@ -35,16 +37,16 @@ public class Moves : MonoBehaviour
 		
 		if (!dontmove)
 		{
-	        if(Input.GetKey("z"))
+	        if(Input.GetKey("up"))
 	            transform.position += transform.up*moveSpeed;
 	        
-			if(Input.GetKey("s"))
+			if(Input.GetKey("down"))
 	           transform.position -= transform.up*moveSpeed;
 			
-			if(Input.GetKey("d")){
+			if(Input.GetKey("right")){
 				transform.position += transform.forward*moveSpeed;
 			}	
-			if(Input.GetKey("q"))
+			if(Input.GetKey("left"))
 	            transform.position -= transform.forward*moveSpeed;
 			
 			if (Input.GetKey(KeyCode.Space) && dontmove)
@@ -61,7 +63,7 @@ public class Moves : MonoBehaviour
 		//Debug.Log("angularTopDown = "+rotX/(Screen.height/140));
 		
 		angularTopDown = 90-rotX/(Screen.height/140);
-		angularLeftRight =270+rotY/(Screen.width/10);
+		angularLeftRight =270+rotY/(Screen.width/50);
 		
 		
 		
@@ -95,7 +97,7 @@ public class Moves : MonoBehaviour
 	IEnumerator Woohoo(float delay)
 	{
 		yield return new WaitForSeconds (delay);
-		audio.Play ();
+		AudioSource.PlayClipAtPoint(woohoo, transform.position);
 	}
 	
 	public void dontMove()
