@@ -53868,6 +53868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1d624376720904c8e5090bc7f1f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1200944653
 GameObject:
   m_ObjectHideFlags: 0
@@ -75388,6 +75391,8 @@ MonoBehaviour:
   moveSpeed: 13.6999998
   turnSpeed: .100000001
   smooth: 2
+  gravity: 9.80000019
+  woohoo: {fileID: 8300000, guid: 0f9377efb20667a4e8dfb685b771c77e, type: 3}
 --- !u!82 &1715014312
 AudioSource:
   m_ObjectHideFlags: 0
