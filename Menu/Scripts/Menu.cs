@@ -11,16 +11,74 @@ public class Menu : MonoBehaviour {
 	GUIStyle titleStyle;
 	GUIStyle levelStyle;
 	
+	float duration = 6.0f;
+    float timer = 0.0f;
+	float timer2 = 0.0f;
+	bool opening = false;
+	bool jump = false;
+	
+	GameObject doors;
+	GameObject bob;
+	
+	public AudioClip buttonPressed; 
+	public AudioClip doorOpening; 
+	
+	float x;
+    float y;
+	float z;
+	
 	// Use this for initialization
 	void Start () {
-	
+		doors = GameObject.FindWithTag("Doors");
+		bob = GameObject.FindWithTag("Bob");
+		
+	x = transform.position.x;
+	y = transform.position.y;
+z = transform.position.z;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		
+		
+		if (opening){
+			timer += Time.deltaTime;
+			 doors.transform.eulerAngles  = Vector3.Lerp(new Vector3(60, 0, 0),  new Vector3(0, 0, 0), timer/duration);
+		}
+				
+		if(jump){
+			timer2 += Time.deltaTime;
+			bob.transform.position = Vector3.Lerp(new Vector3(x,y,z), new Vector3(x,y-4,z-20), timer2/duration);
+			bob.transform.eulerAngles  = Vector3.Lerp(new Vector3(0,270,0), new Vector3(0,270,90), timer2/duration);
+		}
+		
+		if (Input.GetKey(KeyCode.Backspace)  && !opening){
+				StartCoroutine("playButtonPressed",0.0);
+				StartCoroutine("playDoorOpening",1.0);
+				StartCoroutine("moveOutdoor",7.0);
+	        }
+		
+		
 	
 	}
 	
+	IEnumerator playButtonPressed(float delay){
+		yield return new WaitForSeconds (delay);
+		AudioSource.PlayClipAtPoint(buttonPressed, transform.position);
+	}
+	
+	IEnumerator playDoorOpening(float delay){
+		yield return new WaitForSeconds (delay);
+		AudioSource.PlayClipAtPoint(doorOpening, transform.position);
+		opening = true;
+	}
+	
+	IEnumerator moveOutdoor(float delay){
+		yield return new WaitForSeconds (delay);
+		jump=true;		
+	}
 	
 	 void OnGUI() {
 		

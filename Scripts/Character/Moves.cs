@@ -49,12 +49,9 @@ public class Moves : MonoBehaviour
 			if(Input.GetKey("left"))
 	            transform.position -= transform.forward*moveSpeed;
 			
-			if (Input.GetKey(KeyCode.Space))
+			if (Input.GetKey(KeyCode.Space) && dontmove)
 	        {
-	           // transform.Translate(0,0.2f,0);
-				
-				// GameObject.FindWithTag("bob").transform.Rotate(0, 0, 90);
-				
+	         	 Application.LoadLevel("Menu");
 	        }
 		}
 		
