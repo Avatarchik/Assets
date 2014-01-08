@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour {
 	GUIStyle levelStyle;
 	
 	float duration = 6.0f;
+	float moveDuration = 5.0f;
     float timer = 0.0f;
 	float timer2 = 0.0f;
 	bool opening = false;
@@ -50,16 +51,16 @@ z = transform.position.z;
 				
 		if(jump){
 			timer2 += Time.deltaTime;
-			bob.transform.position = Vector3.Lerp(new Vector3(x,y,z), new Vector3(x,y-4,z-20), timer2/duration);
-			bob.transform.eulerAngles  = Vector3.Lerp(new Vector3(0,270,0), new Vector3(0,270,90), timer2/duration);
+			bob.transform.position = Vector3.Lerp(new Vector3(x,y,z), new Vector3(x,y-4,z-20), timer2/moveDuration);
+			bob.transform.eulerAngles  = Vector3.Lerp(new Vector3(0,270,0), new Vector3(0,270,90), timer2/moveDuration);
 		}
 		
 		if (Input.GetKey(KeyCode.Backspace)  && !opening){
 				StartCoroutine("playButtonPressed",0.0);
 				StartCoroutine("playDoorOpening",1.0);
-				StartCoroutine("moveOutdoor",7.0);
-	        }
-		
+				StartCoroutine("moveOutdoor",moveDuration+1);
+				StartCoroutine("launchLevel",duration+moveDuration);
+	        }	
 		
 	
 	}
@@ -80,7 +81,15 @@ z = transform.position.z;
 		jump=true;		
 	}
 	
-	 void OnGUI() {
+	IEnumerator launchLevel(float delay){
+		yield return new WaitForSeconds (delay);
+		Application.LoadLevel("Level_1");		
+	}
+	
+	
+	
+	/*
+	void OnGUI() {
 		
 		titleStyle = new GUIStyle();
 		
@@ -90,8 +99,8 @@ z = transform.position.z;
 		
         GUI.Label(new Rect(Screen.width/2 -400, 100, 100, 20), "Projet Base Jump",titleStyle);
 		
-		
-	/*	Color c = new Color(0.5f,0.1f,0.1f);
+	
+		Color c = new Color(0.5f,0.1f,0.1f);
 		levelStyle = new GUIStyle();
 		levelStyle.fontSize = 50;
 		levelStyle.font = fontFamily;
@@ -99,9 +108,9 @@ z = transform.position.z;
 		
 		GUI.Label(new Rect(300, 200, 100, 20), "Niveau 1",levelStyle);
 		GUI.Label(new Rect(300, 300, 100, 20), "Niveau 2",levelStyle);
-	*/
+		
 	
     }
-		
+	*/
 	
 }
