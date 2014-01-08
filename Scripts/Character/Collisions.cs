@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Collisions : MonoBehaviour {
 	
-	private Manage score;
+	private Manage manage;
 	private Moves move;
+	private bool dead = false;
 
 	// Use this for initialization
 	void Start () {
-		score = GameObject.FindWithTag("Manager").GetComponent<Manage>();
+		manage = GameObject.FindWithTag("Manager").GetComponent<Manage>();
 		move = GetComponent<Moves>();
 	}
 	
@@ -16,40 +17,57 @@ public class Collisions : MonoBehaviour {
 		
         if(other.CompareTag("Glass")){
 			Debug.Log ("Glass");
-			score.Add(10);
-			other.audio.Play();
-			Destroy(other);
-			//TODO : Animation de destruction ?
-			//L'objet n'est pas détruit ?
-		}
-		
-		if(other.CompareTag("Target")){
-			Debug.Log ("TARGET");
-			score.Add (-50);
-			other.audio.Play();
+			manage.AddScore(10);
+			manage.SoundPlay ("glass");
+			
 			
 		}
+		
+//		else if(other.CompareTag("Target")){
+//			dead = true; //well not really but...
+//			other.collider.enabled = false;
+//			Debug.Log ("TARGET");
+//			{
+//				manage.AddScore (50);
+//				manage.SoundPlay ("target");
+//			}
+			
+//		}
 	}
 	
 	void OnCollisionEnter(Collision col) {
 		GameObject other = col.gameObject;
-		
-		if(other.CompareTag("Building")){
-			score.Add (-20);
-			other.audio.Play ();
-			//TODO : Louder. On l'entend à peine le son.
-		}
+
 		
 		if(other.CompareTag("Ground")){
-			score.Add (50);
-			Debug.Log ("GRROUUUUUND");
-			other.audio.Play();
+			Debug.Log ("GRROUUUUUND - Position : " + transform.position);
+			if (!dead) {
+				if(transform.position.x > 693 && transform.position.x < 923 && transform.position.z > 1564 && transform.position.z < 1786){
+					Debug.Log ("Clap clap");
+					manage.SoundPlay ("targetClap");
+				}
+				else{
+					Debug.Log ("Aargh");
+					manage.SoundPlay ("ground");
+				}
+				 
 			move.dontMove();
+			dead = true;
+				
+			}
 			
 		}
 
 	}
 	
+	void OnCollisionExit(Collision col) {
+		GameObject other = col.gameObject;
+		
+		if(other.CompareTag("Building")){
+				manage.AddScore (-20);
+				manage.SoundPlay ("building");
+		}
+	}
 	//Gagner des points en frolant les batiments
 	
 	//if(Vector3.Distance(transform.position, player.position) < distance){

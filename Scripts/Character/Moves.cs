@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Moves : MonoBehaviour
 {
-    public float moveSpeed = 0.5f;
-    public float turnSpeed = 0.1f;
+    public float moveSpeed = 11f;
+    public float turnSpeed = 0.75f;
 	
 	public float smooth = 2.0f;
 	
 	public float gravity = 9.8f;
+	
+	public float magnitude = 0;
+	public float maxSpeed = 150.0f;
 	
 	float rotX;
 	float rotY;
@@ -16,16 +19,28 @@ public class Moves : MonoBehaviour
 	float angularTopDown;
 	float angularLeftRight;
 	
+	private GameObject leftHand, rightHand; 
+	private vrJoystick leftJoy, rightJoy;
+	
 	private bool dontmove = false;
 	
 	public AudioClip woohoo;
+	
+	private Vector3 vRotate, vMove;
 	
 	void Start(){
 
 		rigidbody.freezeRotation=true;
 		Physics.gravity = new Vector3(0, -gravity, 0);
 		
-		StartCoroutine("Woohoo",1.0);
+		//RAZER###########################
+		//leftHand = GameObject.FindWithTag("LeftHand");
+		//rightHand = GameObject.FindWithTag("RightHand");
+		
+		//leftJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (0);
+		//rightJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (1);
+		
+		StartCoroutine("Woohoo",0.5);
 
 	}
 	
@@ -37,6 +52,22 @@ public class Moves : MonoBehaviour
 		
 		if (!dontmove)
 		{
+			//RAZER HYDRA #################################
+			
+			//Déplacement
+			//vMove = new Vector3(-rightJoy.GetAxisValue(0)*moveSpeed,rightJoy.GetAxisValue(2)*moveSpeed,-rightJoy.GetAxisValue(1)*moveSpeed);
+			
+			//Rotation
+			//vRotate = new Vector3(leftJoy.GetAxisValue(0),leftJoy.GetAxisValue(2),-leftJoy.GetAxisValue(1));
+			
+			//transform.position += vMove;
+			//transform.Rotate(vRotate, turnSpeed);
+				
+			// ###############################################
+			
+			
+			// Clavier Souris ##################################
+			
 	        if(Input.GetKey("up"))
 	            transform.position += transform.up*moveSpeed;
 	        
@@ -49,14 +80,20 @@ public class Moves : MonoBehaviour
 			if(Input.GetKey("left"))
 	            transform.position -= transform.forward*moveSpeed;
 			
-			if (Input.GetKey(KeyCode.Space) && dontmove)
+			if (Input.GetKey(KeyCode.LeftShift) && dontmove)
 	        {
 	         	 Application.LoadLevel("Menu");
 	        }
+			
+			// ###############################################
 		}
 		
+		if (rigidbody.velocity.magnitude > maxSpeed)
+			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		
-	
+		
+		magnitude = rigidbody.velocity.magnitude;
+		
 		rotX = Input.mousePosition.y - Screen.height/2;
 		rotY = Input.mousePosition.x - Screen.width/2;
 		
@@ -64,7 +101,6 @@ public class Moves : MonoBehaviour
 		
 		angularTopDown = 90-rotX/(Screen.height/140);
 		angularLeftRight =270+rotY/(Screen.width/50);
-		
 		
 		
 		if((angularTopDown)>150)
@@ -106,4 +142,4 @@ public class Moves : MonoBehaviour
 	}
         
         
-    }
+}
