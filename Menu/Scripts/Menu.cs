@@ -24,6 +24,8 @@ public class Menu : MonoBehaviour {
 	public AudioClip buttonPressed; 
 	public AudioClip doorOpening; 
 	
+	private vrJoystick leftJoy, rightJoy;
+	
 	float x;
     float y;
 	float z;
@@ -67,8 +69,8 @@ public class Menu : MonoBehaviour {
 				StartCoroutine("moveOutdoor",moveDuration+1);
 				StartCoroutine("launchLevel",duration+moveDuration -.5 );
 	        }	
-		//RAZER
-//		if (leftJoy.IsButtonPressed (3) || rightJoy.IsButtonPressed (3))
+////		//RAZER
+//		if (leftJoy.IsButtonPressed (3) || rightJoy.IsButtonPressed (3)) {
 //				
 //				StartCoroutine("playButtonPressed",0.0);
 //				StartCoroutine("playDoorOpening",1.0);

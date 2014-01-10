@@ -6588,6 +6588,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 654eb2207d0de00459c54995ec518376, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 654eb2207d0de00459c54995ec518376, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8726,7 +8730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &158396784
 Transform:
   m_ObjectHideFlags: 0
@@ -79246,7 +79250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1707105167
 Transform:
   m_ObjectHideFlags: 0
@@ -79643,12 +79647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f28fd592cf8d964a8da82c0c3490234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 10.5500002
   turnSpeed: .75
   smooth: 2
   gravity: 9.80000019
   magnitude: 0
-  maxSpeed: 100
+  maxSpeed: 120
   woohoo: {fileID: 8300000, guid: 0f9377efb20667a4e8dfb685b771c77e, type: 3}
 --- !u!82 &1715014312
 AudioSource:
@@ -86362,7 +86366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1855307516
 Transform:
   m_ObjectHideFlags: 0

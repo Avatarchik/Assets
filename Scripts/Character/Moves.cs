@@ -20,7 +20,8 @@ public class Moves : MonoBehaviour
 	float angularLeftRight;
 	
 	private GameObject leftHand, rightHand; 
-	private vrJoystick leftJoy, rightJoy;
+	private vrJoystick leftJoy;
+	private vrJoystick rightJoy;
 	
 	private bool dontmove = false;
 	
@@ -33,13 +34,14 @@ public class Moves : MonoBehaviour
 		rigidbody.freezeRotation=true;
 		Physics.gravity = new Vector3(0, -gravity, 0);
 		
+		
 		//RAZER###########################
-		//leftHand = GameObject.FindWithTag("LeftHand");
-		//rightHand = GameObject.FindWithTag("RightHand");
+		leftHand = GameObject.FindWithTag("LeftHand");
+		rightHand = GameObject.FindWithTag("RightHand");
 		
-		//leftJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (0);
-		//rightJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (1);
-		
+		leftJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex(0);
+		rightJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex(1);
+				
 		StartCoroutine("Woohoo",0.5);
 
 	}
@@ -55,23 +57,22 @@ public class Moves : MonoBehaviour
 			//RAZER HYDRA #################################
 			
 			//Déplacement
-			//vMove = new Vector3(-rightJoy.GetAxisValue(0)*moveSpeed,rightJoy.GetAxisValue(2)*moveSpeed,-rightJoy.GetAxisValue(1)*moveSpeed);
-			
-// TOTEST : Est-ce que ca marche mieux maintenant que le turnSpeed a été augmenté ?
+			vMove = new Vector3(-rightJoy.GetAxisValue(0)*moveSpeed,rightJoy.GetAxisValue(2)*moveSpeed,-rightJoy.GetAxisValue(1)*moveSpeed);			
+
 			//Rotation
-			//vRotate = new Vector3(leftJoy.GetAxisValue(0),leftJoy.GetAxisValue(2),-leftJoy.GetAxisValue(1));
+			vRotate = new Vector3(leftJoy.GetAxisValue(0),leftJoy.GetAxisValue(2),-leftJoy.GetAxisValue(1));
 			
-			//transform.position += vMove;
-			//transform.Rotate(vRotate, turnSpeed);
+			transform.position += vMove;
+			transform.Rotate(vRotate, turnSpeed);
 			
-// TOTEST : 			
-//			if (leftJoy.IsButtonPressed (1) || rightJoy.IsButtonPressed (1))
-//				
-//				Application.LoadLevel("Menu");
-//			
-//			if (leftJoy.IsButtonPressed (2) || rightJoy.IsButtonPressed (2))
-//				
-//				Application.LoadLevel("Level_1");
+		
+			if (leftJoy.IsButtonPressed (1) || rightJoy.IsButtonPressed (1))
+				
+				Application.LoadLevel("Menu");
+			
+			if (leftJoy.IsButtonPressed (2) || rightJoy.IsButtonPressed (2))
+				
+				Application.LoadLevel("Level_1");
 			
 			// ###############################################
 			
@@ -90,16 +91,18 @@ public class Moves : MonoBehaviour
 			if(Input.GetKey("left"))
 	            transform.position -= transform.forward*moveSpeed;
 			
-			if (Input.GetKey(KeyCode.M))   {
+			if (Input.GetKey(KeyCode.M)) {
 	         	 Application.LoadLevel("Menu");
 	        }
-			if (Input.GetKey(KeyCode.G))   {
+			if (Input.GetKey(KeyCode.G)) {
 	         	 Application.LoadLevel("Level_1");
 	        }
 			
 			
 			// ###############################################
 		}
+		
+		//Hack pour que la vitesse ne dépasse pas maxSpeed
 		
 		if (rigidbody.velocity.magnitude > maxSpeed)
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
