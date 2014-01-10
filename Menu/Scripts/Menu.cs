@@ -30,12 +30,18 @@ public class Menu : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		doors = GameObject.FindWithTag("Doors");
-		bob = GameObject.FindWithTag("Bob");
+	doors = GameObject.FindWithTag("Doors");
+	bob = GameObject.FindWithTag("Bob");
+		
+	//RAZER	
+//	leftJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (0);
+//	rightJoy = MiddleVR.VRDeviceMgr.GetJoystickByIndex (1);
 		
 	x = transform.position.x;
 	y = transform.position.y;
-z = transform.position.z;
+	z = transform.position.z;
+		
+		
 		
 	}
 	
@@ -59,8 +65,16 @@ z = transform.position.z;
 				StartCoroutine("playButtonPressed",0.0);
 				StartCoroutine("playDoorOpening",1.0);
 				StartCoroutine("moveOutdoor",moveDuration+1);
-				StartCoroutine("launchLevel",duration+moveDuration);
+				StartCoroutine("launchLevel",duration+moveDuration -.5 );
 	        }	
+		//RAZER
+//		if (leftJoy.IsButtonPressed (3) || rightJoy.IsButtonPressed (3))
+//				
+//				StartCoroutine("playButtonPressed",0.0);
+//				StartCoroutine("playDoorOpening",1.0);
+//				StartCoroutine("moveOutdoor",moveDuration+1);
+//				StartCoroutine("launchLevel",duration+moveDuration -.5 );
+//	        }	
 		
 	
 	}

@@ -11,7 +11,7 @@ public class Moves : MonoBehaviour
 	public float gravity = 9.8f;
 	
 	public float magnitude = 0;
-	public float maxSpeed = 150.0f;
+	public float maxSpeed = 125.0f;
 	
 	float rotX;
 	float rotY;
@@ -57,12 +57,22 @@ public class Moves : MonoBehaviour
 			//Déplacement
 			//vMove = new Vector3(-rightJoy.GetAxisValue(0)*moveSpeed,rightJoy.GetAxisValue(2)*moveSpeed,-rightJoy.GetAxisValue(1)*moveSpeed);
 			
+// TOTEST : Est-ce que ca marche mieux maintenant que le turnSpeed a été augmenté ?
 			//Rotation
 			//vRotate = new Vector3(leftJoy.GetAxisValue(0),leftJoy.GetAxisValue(2),-leftJoy.GetAxisValue(1));
 			
 			//transform.position += vMove;
 			//transform.Rotate(vRotate, turnSpeed);
-				
+			
+// TOTEST : 			
+//			if (leftJoy.IsButtonPressed (1) || rightJoy.IsButtonPressed (1))
+//				
+//				Application.LoadLevel("Menu");
+//			
+//			if (leftJoy.IsButtonPressed (2) || rightJoy.IsButtonPressed (2))
+//				
+//				Application.LoadLevel("Level_1");
+			
 			// ###############################################
 			
 			
@@ -80,10 +90,13 @@ public class Moves : MonoBehaviour
 			if(Input.GetKey("left"))
 	            transform.position -= transform.forward*moveSpeed;
 			
-			if (Input.GetKey(KeyCode.LeftShift) && dontmove)
-	        {
+			if (Input.GetKey(KeyCode.M))   {
 	         	 Application.LoadLevel("Menu");
 	        }
+			if (Input.GetKey(KeyCode.G))   {
+	         	 Application.LoadLevel("Level_1");
+	        }
+			
 			
 			// ###############################################
 		}

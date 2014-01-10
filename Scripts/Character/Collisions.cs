@@ -44,7 +44,7 @@ public class Collisions : MonoBehaviour {
 			if (!dead) {
 				if(transform.position.x > 693 && transform.position.x < 923 && transform.position.z > 1564 && transform.position.z < 1786){
 					Debug.Log ("Clap clap");
-					manage.SoundPlay ("targetClap");
+					manage.SoundPlay ("target");
 				}
 				else{
 					Debug.Log ("Aargh");
